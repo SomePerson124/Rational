@@ -24,4 +24,37 @@ public class Rational extends Number implements Comparable<Rational> {
         }
     }
 
+    public Rational add(Rational other) {
+        BigInteger num1 = this.numerator.multiply(other.denominator);
+        BigInteger num2 = this.denominator.multiply(other.numerator);
+
+        BigInteger numerator = num1.add(num2);
+        BigInteger denominator = this.denominator.multiply(other.denominator);
+
+        return new Rational(numerator, denominator);
+    }
+
+    public Rational subtract(Rational other) {
+        BigInteger num1 = this.numerator.multiply(other.denominator);
+        BigInteger num2 = this.denominator.multiply(other.numerator);
+
+        BigInteger numerator = num1.subtract(num2);
+        BigInteger denominator = this.denominator.multiply(other.denominator);
+
+        return new Rational(numerator, denominator);
+    }
+
+    public Rational multiply(Rational other) {
+        BigInteger numerator = this.numerator.multiply(other.numerator);
+        BigInteger denominator = this.denominator.multiply(other.denominator);
+
+        return new Rational(numerator, denominator);
+    }
+
+    public Rational divide(Rational other) {
+        BigInteger numerator = this.numerator.multiply(other.denominator);
+        BigInteger denominator = this.denominator.multiply(other.numerator);
+
+        return new Rational(numerator, denominator);
+    }
 }
