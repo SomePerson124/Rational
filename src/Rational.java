@@ -19,8 +19,18 @@ public class Rational extends Number implements Comparable<Rational> {
             this.numerator = BigInteger.ZERO;
             this.denominator = BigInteger.ONE;
         } else {
-            this.numerator = numerator;
-            this.denominator = denominator;
+            BigInteger gcd = numerator.gcd(denominator);
+
+            BigInteger simplN = numerator.divide(gcd);
+            BigInteger simplD = denominator.divide(gcd);
+
+            if (simplD.compareTo(BigInteger.ZERO) < 0) {
+                simplN = simplN.negate();
+                simplD = simplD.negate();
+            }
+
+            this.numerator = simplN;
+            this.denominator = simplD;
         }
     }
 
